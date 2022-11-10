@@ -1,0 +1,19 @@
+services:
+
+  app:
+    build:
+      context: ./node
+    container_name: app
+    #command: node index.js
+    #entrypoint: dockerize -wait tcp://db:3306 -timeout 30s docker-entrypoint.sh
+    networks:
+      - host1
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+
+networks:
+  host1:
+    driver: bridge
